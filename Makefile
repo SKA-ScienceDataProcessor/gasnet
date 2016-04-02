@@ -22,7 +22,7 @@ release : release/config.status
 release/config.status : $(RELEASE_CONFIG) $(GASNET_VERSION)/configure
 ifdef CROSS_CONFIGURE
 # Cray systems require cross-compiling fun
-	mkdir release
+	mkdir -p release
 	# WAH for issue with new Cray cc/CC not including PMI stuff
 	echo '#!/bin/bash' > release/cc.custom
 	echo 'cc "$$@" $$CRAY_UGNI_POST_LINK_OPTS $$CRAY_PMI_POST_LINK_OPTS -Wl,--as-needed,-lugni,-lpmi,--no-as-needed' >> release/cc.custom
@@ -35,7 +35,7 @@ ifdef CROSS_CONFIGURE
 	cd release; PATH=`pwd`:$$PATH /bin/sh ../$(GASNET_VERSION)/cross-configure --prefix=`pwd` `cat $(realpath $(RELEASE_CONFIG))`
 else
 # normal configure path
-	mkdir release
+	mkdir -p release
 	cd release; CC='mpicc -fPIC' CXX='mpicxx -fPIC' ../$(GASNET_VERSION)/configure --prefix=`pwd` `cat $(realpath $(RELEASE_CONFIG))`
 endif
 
