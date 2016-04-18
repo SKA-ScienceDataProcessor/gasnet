@@ -1,5 +1,6 @@
 GASNET_VERSION = GASNet-1.26.0
 
+ifeq ($(ICTYPE)x,x)
 ifeq ($(findstring daint,$(shell uname -n)),daint)
 ICTYPE = aries
 CROSS_CONFIGURE = cross-configure-crayxc-linux
@@ -9,6 +10,7 @@ ICTYPE = gemini
 CROSS_CONFIGURE = cross-configure-crayxe-linux
 else
 ICTYPE = default
+endif
 endif
 endif
 

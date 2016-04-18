@@ -3,7 +3,7 @@
 --with-segment-mmap-max=16GB
 --disable-seq
 --disable-parsync
---disable-udp
+--enable-udp
 --enable-mpi-compat
 --enable-mpi
 --disable-aligned-segments
