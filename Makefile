@@ -38,7 +38,7 @@ ifdef CROSS_CONFIGURE
 else
 # normal configure path
 	mkdir -p release
-	cd release; CC='mpicc -fPIC' CXX='mpicxx -fPIC' ../$(GASNET_VERSION)/configure --prefix=`pwd` `cat $(realpath $(RELEASE_CONFIG))`
+	cd release; MPICC='mpicc -fPIC' MPICXX='mpicxx -fPIC' CC='mpicc -fPIC' CXX='mpicxx -fPIC' ../$(GASNET_VERSION)/configure --prefix=`pwd` `cat $(realpath $(RELEASE_CONFIG))`
 endif
 
 $(GASNET_VERSION)/configure : $(GASNET_VERSION).tar.gz
